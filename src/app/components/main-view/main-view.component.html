@@ -1,31 +1,10 @@
 <div class="container main-view-container mt-5">
     <div class="row .g-0 h-100">
 
-        <div class="col-3 h-100 p-0 values-column border">
-            <ng-template [ngIf]="glucoseValues">
-                <div *ngFor="let glucoseValue of glucoseValues" class="border-bottom p-2">
-
-                    <div class="row w-100">
-                        <div class="col">
-                            <h3 class="inline-text" [ngClass]="{
-                                'text-success' : glucoseValue.sgv > status.settings.thresholds.bgLow && glucoseValue.sgv < status.settings.thresholds.bgHigh,
-                                'text-warning' : glucoseValue.sgv >= status.settings.thresholds.bgHigh,
-                                'text-danger' : glucoseValue.sgv <= status.settings.thresholds.bgLow
-
-                            }">
-                                {{glucoseValue.sgv}}
-                            </h3>
-                            <h6 class="inline-text">{{status.settings.units}}</h6>
-                        </div>
-
-                        <div class="col-auto fw-bold">    
-                            {{ glucoseValue.dateString | date  : 'short'  }}
-                        </div>
-                    </div>
-                </div>  
-            </ng-template>
-
+        <div class="col-3 h-100 p-0 values-column">
+           <app-glucose-list [glucoseValues]="glucoseValues" [status]="status"></app-glucose-list>
         </div>
+
         <div class="col-9">
             <app-glucose-line-chart [glucoseValues]="glucoseValues"></app-glucose-line-chart>
         </div>

@@ -12,10 +12,22 @@ export class GlucoseLineChartComponent {
   
   @Input() glucoseValues: GlucoseValue[] = new Array<GlucoseValue>();
 
-  public data:any[] = [];
+  public datasets:any[] = [{
+    data:[],
+    label: 'Blood Glucose',
+    backgroundColor: 'rgba(148,159,177,0.2)',
+    borderColor: 'rgba(148,159,177,1)',
+    pointBackgroundColor: 'rgba(148,159,177,1)',
+    pointBorderColor: '#fff',
+    pointHoverBackgroundColor: '#fff',
+    pointHoverBorderColor: 'rgba(148,159,177,0.8)',
+    fill: 'origin'
+  }
+  ];
 
 
   public lineChartOptions: ChartConfiguration['options'] = {
+    
     elements: {
       line: {
         tension: 0.5
@@ -27,8 +39,21 @@ export class GlucoseLineChartComponent {
         time: {
           unit: 'hour'
         }
-      },   
+      },
+      y:{
+        beginAtZero: true,
+        max: 300
+      }  
     },
+    plugins: {
+      legend:{
+        display: false
+      },
+      title: {
+          display: true,
+          text: 'Glucose Levels'
+      }
+  }
   };
   
 
@@ -49,7 +74,7 @@ export class GlucoseLineChartComponent {
   setChartData() {
     this.glucoseValues.forEach( value => {
 
-      this.data.push({
+      this.datasets[0].data.push({
         x: new Date(value.dateString),
         y: value.sgv
      })

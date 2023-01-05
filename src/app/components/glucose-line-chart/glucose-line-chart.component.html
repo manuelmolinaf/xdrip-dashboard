@@ -1,6 +1,6 @@
 <div class="rounded shadow p-3">
         <canvas *ngIf="glucoseValues.length > 0" baseChart class="chart"
-                [datasets]="[{ data, label: 'Blood Glucose' }]"
+                [datasets]="datasets"
                 [options]="lineChartOptions"
                 [type]="lineChartType"></canvas>
 </div>

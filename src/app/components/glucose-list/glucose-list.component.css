@@ -1,0 +1,12 @@
+.glucose-list{
+    overflow-y: hidden;
+    height: 70vh;
+}
+
+.glucose-list:hover{
+    overflow-y: scroll;
+}
+
+.inline-text{
+    display: inline;
+}

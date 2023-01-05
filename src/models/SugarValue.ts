@@ -1,7 +1,7 @@
-export interface SugarValue {
+export interface GlucoseValue {
     _id: string;
     device: string;
-    dateString: Date;
+    dateString: string;
     sysTime: string;
     date: number;
     sgv: number;

@@ -1,5 +1,5 @@
 {
-  "name": "xdrip-play",
+  "name": "xdrip-dashboard",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "xdrip-play": {
+    "xdrip-dashboard": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/xdrip-play",
+            "outputPath": "dist/xdrip-dashboard",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "xdrip-play:build:production"
+              "browserTarget": "xdrip-dashboard:build:production"
             },
             "development": {
-              "browserTarget": "xdrip-play:build:development"
+              "browserTarget": "xdrip-dashboard:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "xdrip-play:build"
+            "browserTarget": "xdrip-dashboard:build"
           }
         },
         "test": {

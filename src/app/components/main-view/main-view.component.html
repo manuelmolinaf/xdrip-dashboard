@@ -1,8 +1,8 @@
-<div class="container main-view-container mt-5 rounded border ">
+<div class="container main-view-container mt-5">
     <div class="row .g-0 h-100">
-        <div class="col-3 h-100 p-0 values-column">
 
-            <ng-template [ngIf]="glucoseValues" class="">
+        <div class="col-3 h-100 p-0 values-column border">
+            <ng-template [ngIf]="glucoseValues">
                 <div *ngFor="let glucoseValue of glucoseValues" class="border-bottom p-2">
 
                     <div class="row w-100">
@@ -18,7 +18,7 @@
                             <h6 class="inline-text">{{status.settings.units}}</h6>
                         </div>
 
-                        <div class="col fw-bold">    
+                        <div class="col-auto fw-bold">    
                             {{ glucoseValue.dateString | date  : 'short'  }}
                         </div>
                     </div>
@@ -27,7 +27,8 @@
 
         </div>
         <div class="col-9">
-            
+            <app-glucose-line-chart [glucoseValues]="glucoseValues"></app-glucose-line-chart>
         </div>
     </div>
 </div>
+

@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MainViewComponent } from './components/main-view/main-view.component';
 import { NgChartsModule } from 'ng2-charts';
+import { GlucoseLineChartComponent } from './components/glucose-line-chart/glucose-line-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainViewComponent
+    MainViewComponent,
+    GlucoseLineChartComponent
   ],
   imports: [
     BrowserModule,

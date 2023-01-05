@@ -11,10 +11,11 @@ import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
   styleUrls: ['./main-view.component.css']
 })
 export class MainViewComponent {
-  glucoseValues:GlucoseValue[] = new Array<GlucoseValue>();
-  glucoseValuesCount:number = 50;
-  status!: Status;
+  public glucoseValues:GlucoseValue[] = new Array<GlucoseValue>();
+  public glucoseValuesCount:number = 50;
+  public status!: Status;
   public lineChartData: ChartConfiguration['data'] | undefined;
+  public lineChartType: ChartType = 'line';
 
 
   constructor(private xdripService:XdripService){
@@ -32,7 +33,7 @@ export class MainViewComponent {
     
     request.subscribe( data =>{
       this.glucoseValues = data;
-
+      this.setChartData();
     })
     
   }
@@ -42,7 +43,7 @@ export class MainViewComponent {
       mergeMap(()=> this.xdripService.getGlucoseValues(this.glucoseValuesCount))
     ).subscribe(data => {
       this.glucoseValues = data;
-      console.log(data);
+      this.setChartData();
     });
   }
 

@@ -14,11 +14,11 @@ export class XdripService {
 
   constructor(private http: HttpClient) { }
 
-  getGlucoseValues(count:number):Observable<GlucoseValue[]>{
+  public getGlucoseValues(count:number):Observable<GlucoseValue[]>{
     return this.http.get<GlucoseValue[]>(this.xdripUrl + '/sgv.json?count=' + count.toString());
   }
 
-  getStatus():Observable<Status>{
+  public getStatus():Observable<Status>{
     return this.http.get<Status>(this.xdripUrl + '/status.json');
   }
 

@@ -1,7 +1,7 @@
 export interface SugarValue {
     _id: string;
     device: string;
-    dateString: string;
+    dateString: Date;
     sysTime: string;
     date: number;
     sgv: number;

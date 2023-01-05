@@ -1,9 +1,30 @@
-<div class="container m-5">
-    <div class="row">
-        <div class="col-3">
-            <ul *ngIf="sugarValues" class="list-group">
-                <li *ngFor="let sugarValue of sugarValues" class="list-group-item">{{sugarValue.sgv}}</li>  
-            </ul>
+<div class="container main-view-container mt-5 rounded border ">
+    <div class="row .g-0 h-100">
+        <div class="col-3 h-100 p-0 values-column">
+
+            <ng-template [ngIf]="glucoseValues" class="">
+                <div *ngFor="let glucoseValue of glucoseValues" class="border-bottom p-2">
+
+                    <div class="row w-100">
+                        <div class="col">
+                            <h3 class="inline-text" [ngClass]="{
+                                'text-success' : glucoseValue.sgv > status.settings.thresholds.bgLow && glucoseValue.sgv < status.settings.thresholds.bgHigh,
+                                'text-warning' : glucoseValue.sgv >= status.settings.thresholds.bgHigh,
+                                'text-danger' : glucoseValue.sgv <= status.settings.thresholds.bgLow
+
+                            }">
+                                {{glucoseValue.sgv}}
+                            </h3>
+                            <h6 class="inline-text">{{status.settings.units}}</h6>
+                        </div>
+
+                        <div class="col fw-bold">    
+                            {{ glucoseValue.dateString | date  : 'short'  }}
+                        </div>
+                    </div>
+                </div>  
+            </ng-template>
+
         </div>
         <div class="col-9">
             

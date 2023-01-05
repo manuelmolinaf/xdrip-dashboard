@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { SugarValue } from '../models/SugarValue';
+import { Status } from 'src/models/Status';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,12 @@ export class XdripService {
 
   constructor(private http: HttpClient) { }
 
-  getGlucoseValues(count:number){
+  getGlucoseValues(count:number):Observable<SugarValue[]>{
     return this.http.get<SugarValue[]>(this.xdripUrl + '/sgv.json?count=' + count.toString());
+  }
+
+  getStatus():Observable<Status>{
+    return this.http.get<Status>(this.xdripUrl + '/status.json');
   }
 
 }

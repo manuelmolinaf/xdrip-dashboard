@@ -1,0 +1,13 @@
+
+.main-view-container{
+    height: 70vh;
+    overflow: hidden;
+}
+
+.values-column{
+    overflow-y: scroll;
+}
+
+.inline-text{
+    display: inline;
+}

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { interval, mergeMap } from 'rxjs';
+import { Status } from 'src/models/Status';
 import { SugarValue } from 'src/models/SugarValue';
 import { XdripService } from 'src/services/xdrip.service';
+import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-main-view',
@@ -8,26 +11,53 @@ import { XdripService } from 'src/services/xdrip.service';
   styleUrls: ['./main-view.component.css']
 })
 export class MainViewComponent {
-  sugarValues:SugarValue[] = new Array<SugarValue>;
+  glucoseValues:SugarValue[] = new Array<SugarValue>();
+  glucoseValuesCount:number = 50;
+  status!: Status;
+  public lineChartData: ChartConfiguration['data'] | undefined;
 
 
   constructor(private xdripService:XdripService){
-
+    
   }
 
   ngOnInit(){
-    this.getSugarValues(50);
+    this.setXdripStatus();
+    this.setGlucoseValues();
+    this.refreshGlucoseValues();
   }
 
-  getSugarValues(count:number){
-    var request = this.xdripService.getGlucoseValues(count);
+  setGlucoseValues(){
+    var request = this.xdripService.getGlucoseValues(this.glucoseValuesCount);
+    
+    request.subscribe( data =>{
+      this.glucoseValues = data;
 
-    request.subscribe( values =>{
-      this.sugarValues = values;
-      console.log(values)
     })
     
   }
+
+  refreshGlucoseValues(){
+    interval(5*60*100).pipe(
+      mergeMap(()=> this.xdripService.getGlucoseValues(this.glucoseValuesCount))
+    ).subscribe(data => {
+      this.glucoseValues = data;
+      console.log(data);
+    });
+  }
+
+  setXdripStatus(){   
+    var request = this.xdripService.getStatus();
+    request.subscribe( data => this.status = data);
+  }
+
+  getChartData(){
+    this.glucoseValues.map(value => {
+
+    })
+  }
+
+
 
 
 }

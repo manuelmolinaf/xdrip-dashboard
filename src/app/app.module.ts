@@ -10,6 +10,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { GlucoseLineChartComponent } from './components/glucose-line-chart/glucose-line-chart.component';
 import { GlucoseListComponent } from './components/glucose-list/glucose-list.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

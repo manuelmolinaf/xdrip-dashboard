@@ -15,12 +15,12 @@ export class GlucoseLineChartComponent {
   public datasets:any[] = [{
     data:[],
     label: 'Blood Glucose',
-    backgroundColor: 'rgba(148,159,177,0.2)',
-    borderColor: 'rgba(148,159,177,1)',
-    pointBackgroundColor: 'rgba(148,159,177,1)',
+    backgroundColor: 'rgba(77,83,96,0.2)',
+    borderColor: 'rgba(77,83,96,1)',
+    pointBackgroundColor: 'rgba(77,83,96,1)',
     pointBorderColor: '#fff',
     pointHoverBackgroundColor: '#fff',
-    pointHoverBorderColor: 'rgba(148,159,177,0.8)',
+    pointHoverBorderColor: 'rgba(77,83,96,1)',
     fill: 'origin'
   }
   ];
@@ -31,6 +31,9 @@ export class GlucoseLineChartComponent {
     elements: {
       line: {
         tension: 0.5
+      },
+      point:{
+        radius:0
       }
     },
     scales: {
@@ -69,9 +72,11 @@ export class GlucoseLineChartComponent {
 
   ngOnChanges(){
     this.setChartData();
+    this.chart?.chart?.update();
   }
 
   setChartData() {
+    this.datasets[0].data = []
     this.glucoseValues.forEach( value => {
 
       this.datasets[0].data.push({

@@ -12,7 +12,7 @@ import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 })
 export class MainViewComponent {
   public glucoseValues:GlucoseValue[] = new Array<GlucoseValue>();
-  public glucoseValuesCount:number = 50;
+  public glucoseValuesCount:number = 288;
   public status!: Status;
   public lineChartData: ChartConfiguration['data'] | undefined;
   public lineChartType: ChartType = 'line';

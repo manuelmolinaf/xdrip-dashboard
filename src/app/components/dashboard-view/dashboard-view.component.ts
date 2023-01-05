@@ -4,13 +4,13 @@ import { Status } from 'src/models/Status';
 import { GlucoseValue as GlucoseValue } from 'src/models/SugarValue';
 import { XdripService } from 'src/services/xdrip.service';
 import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
-
 @Component({
-  selector: 'app-main-view',
-  templateUrl: './main-view.component.html',
-  styleUrls: ['./main-view.component.css']
+  selector: 'app-dashboard-view',
+  templateUrl: './dashboard-view.component.html',
+  styleUrls: ['./dashboard-view.component.css']
 })
-export class MainViewComponent {
+export class DashboardViewComponent {
+
   public glucoseValues:GlucoseValue[] = new Array<GlucoseValue>();
   public glucoseValuesCount:number = 288;
   public status!: Status;
@@ -74,8 +74,4 @@ export class MainViewComponent {
 
     this.lineChartData = data;
   }
-
-
-
-
 }

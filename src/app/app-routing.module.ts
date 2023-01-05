@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardViewComponent } from './components/dashboard-view/dashboard-view.component';
 import { GlucoseLineChartComponent } from './components/glucose-line-chart/glucose-line-chart.component';
-import { MainViewComponent } from './components/main-view/main-view.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/main-view', pathMatch: 'full'},
-  {path:'main-view', component:MainViewComponent},
+  {path: '', redirectTo: '/dashboard-view', pathMatch: 'full'},
+  {path:'dashboard-view', component:DashboardViewComponent},
   {path:'chart', component:GlucoseLineChartComponent}
 ];
 

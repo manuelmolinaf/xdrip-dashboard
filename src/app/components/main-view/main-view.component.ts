@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { interval, mergeMap } from 'rxjs';
 import { Status } from 'src/models/Status';
-import { SugarValue } from 'src/models/SugarValue';
+import { GlucoseValue as GlucoseValue } from 'src/models/SugarValue';
 import { XdripService } from 'src/services/xdrip.service';
 import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 
@@ -11,7 +11,7 @@ import { ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
   styleUrls: ['./main-view.component.css']
 })
 export class MainViewComponent {
-  glucoseValues:SugarValue[] = new Array<SugarValue>();
+  glucoseValues:GlucoseValue[] = new Array<GlucoseValue>();
   glucoseValuesCount:number = 50;
   status!: Status;
   public lineChartData: ChartConfiguration['data'] | undefined;

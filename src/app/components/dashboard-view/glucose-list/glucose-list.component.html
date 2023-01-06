@@ -1,0 +1,45 @@
+
+<ng-template [ngIf]="glucoseValues.length > 0 && status" [ngIfElse]="loading">
+
+    <div class="rounded shadow bg-white glucose-list">
+    
+        <ng-template  ngFor let-glucoseValue [ngForOf]="glucoseValues">
+            <div class="row w-100 p-2 m-0 border-bottom">
+                <div class="col">
+                    <h3 class="inline-text" [ngClass]="{
+                        'text-success' : glucoseValue.sgv > status.settings.thresholds.bgLow && glucoseValue.sgv < status.settings.thresholds.bgHigh,
+                        'text-warning' : glucoseValue.sgv >= status.settings.thresholds.bgHigh,
+                        'text-danger' : glucoseValue.sgv <= status.settings.thresholds.bgLow
+                    }">
+                        {{glucoseValue.sgv}}
+                    </h3>
+                    <h6 class="inline-text">{{status.settings.units}}</h6>
+                </div>
+        
+                <div class="col-auto fw-bold">    
+                    {{ glucoseValue.dateString | date  : 'short'  }}
+                </div>
+            </div>
+        </ng-template>       
+        
+    </div>
+
+</ng-template>
+
+
+
+<ng-template #loading>
+    <div class="rounded shadow bg-white glucose-list d-flex">
+        <div class="mx-auto my-auto">
+            <div class="spinner-grow spinner-grow-sm text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow spinner-grow-sm text-secondary ms-2 me-2" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow spinner-grow-sm text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>   
+    </div>   
+</ng-template>

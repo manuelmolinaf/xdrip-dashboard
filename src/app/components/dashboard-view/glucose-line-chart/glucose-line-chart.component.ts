@@ -27,7 +27,8 @@ export class GlucoseLineChartComponent {
 
 
   public lineChartOptions: ChartConfiguration['options'] = {
-    
+    responsive:true,
+    maintainAspectRatio:false,
     elements: {
       line: {
         tension: 0.5

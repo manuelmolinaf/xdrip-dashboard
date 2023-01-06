@@ -7,10 +7,10 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgChartsModule } from 'ng2-charts';
-import { GlucoseLineChartComponent } from './components/glucose-line-chart/glucose-line-chart.component';
-import { GlucoseListComponent } from './components/glucose-list/glucose-list.component';
+import { GlucoseLineChartComponent } from './components/dashboard-view/glucose-line-chart/glucose-line-chart.component';
+import { GlucoseListComponent } from './components/dashboard-view/glucose-list/glucose-list.component';
 import { DashboardViewComponent } from './components/dashboard-view/dashboard-view.component';
-import { StatisticsComponent } from './components/statistics/statistics.component';
+import { StatisticsComponent } from './components/dashboard-view/statistics/statistics.component';
 
 
 @NgModule({

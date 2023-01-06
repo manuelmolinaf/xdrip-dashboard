@@ -1,0 +1,24 @@
+<ng-template [ngIf]="glucoseValues.length > 0" [ngIfElse]="loading">
+    <div class="rounded shadow p-3 bg-white chart-container">
+        <canvas ngClass="h-100" baseChart class="chart"
+            [datasets]="datasets"
+            [options]="lineChartOptions"
+            [type]="lineChartType"></canvas>
+        </div>
+</ng-template>
+
+<ng-template #loading>
+    <div class="rounded shadow bg-white glucose-list d-flex chart-container">
+        <div class="mx-auto my-auto">
+            <div class="spinner-grow spinner-grow-sm text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow spinner-grow-sm text-secondary ms-2 me-2" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow spinner-grow-sm text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>   
+    </div>   
+</ng-template>

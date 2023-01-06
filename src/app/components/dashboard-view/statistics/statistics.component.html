@@ -1,3 +1,26 @@
-<div class="rounded shadow bg-white">
+<ng-template [ngIf]="glucoseValues.length > 0" [ngIfElse]="loading">
 
-</div>
+    <div class="rounded shadow bg-white statistics-container">
+        Average: {{glucoseAverage}}
+        Max Glucose: {{maxGlucose}}
+        Min Glucose: {{minGlucose}}
+    </div>
+    
+</ng-template>
+
+
+<ng-template #loading>
+    <div class="rounded shadow bg-white statistics-container d-flex">
+        <div class="mx-auto my-auto">
+            <div class="spinner-grow spinner-grow-sm text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow spinner-grow-sm text-secondary ms-2 me-2" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-grow spinner-grow-sm text-secondary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>   
+    </div>   
+</ng-template>

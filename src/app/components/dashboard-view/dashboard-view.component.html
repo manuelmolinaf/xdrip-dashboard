@@ -1,13 +1,15 @@
-<body class="bg-main">
-    <div class="container main-view-container mt-5">
-        <div class="row .g-0">  
-            <div class="col-3 values-column">
-               <app-glucose-list [glucoseValues]="glucoseValues" [status]="status"></app-glucose-list>
-            </div>
-    
-            <div class="col-9">
-                <app-glucose-line-chart [glucoseValues]="glucoseValues"></app-glucose-line-chart>
-            </div>
-        </div>
+<body class="bg-main h-100">
+    <div class="container main-view-container mt-5" style="height: 90vh;">
+
+        <gridster *ngIf="dashboard.length > 0" [options]="options">
+            <gridster-item class="rounded shadow" [item]="dashboard[0]">
+                <app-glucose-list [glucoseValues]="glucoseValues" [status]="status"></app-glucose-list>
+            </gridster-item>
+            <gridster-item class="rounded shadow" [item]="dashboard[1]">
+                <app-glucose-line-chart #linechart [glucoseValues]="glucoseValues"></app-glucose-line-chart>
+            </gridster-item>
+        </gridster>
+        
     </div>
+    
 </body>

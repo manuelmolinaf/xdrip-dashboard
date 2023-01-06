@@ -11,6 +11,8 @@ import { GlucoseLineChartComponent } from './components/dashboard-view/glucose-l
 import { GlucoseListComponent } from './components/dashboard-view/glucose-list/glucose-list.component';
 import { DashboardViewComponent } from './components/dashboard-view/dashboard-view.component';
 import { StatisticsComponent } from './components/dashboard-view/statistics/statistics.component';
+import {NgForOf} from '@angular/common';
+import {GridsterComponent, GridsterItemComponent} from 'angular-gridster2';
 
 
 @NgModule({
@@ -25,7 +27,10 @@ import { StatisticsComponent } from './components/dashboard-view/statistics/stat
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgChartsModule
+    NgChartsModule,
+    NgForOf,
+    GridsterComponent,
+    GridsterItemComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

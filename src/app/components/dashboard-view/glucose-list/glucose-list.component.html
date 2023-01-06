@@ -1,7 +1,7 @@
 
 <ng-template [ngIf]="glucoseValues.length > 0 && status" [ngIfElse]="loading">
 
-    <div class="rounded shadow bg-white glucose-list">
+    <div class="glucose-list-container">
     
         <ng-template  ngFor let-glucoseValue [ngForOf]="glucoseValues">
             <div class="row w-100 p-2 m-0 border-bottom">
@@ -29,7 +29,7 @@
 
 
 <ng-template #loading>
-    <div class="rounded shadow bg-white glucose-list d-flex">
+    <div class="glucose-list-container d-flex">
         <div class="mx-auto my-auto">
             <div class="spinner-grow spinner-grow-sm text-secondary" role="status">
                 <span class="visually-hidden">Loading...</span>

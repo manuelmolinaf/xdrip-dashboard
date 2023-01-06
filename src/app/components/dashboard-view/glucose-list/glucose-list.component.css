@@ -1,9 +1,10 @@
-.glucose-list{
+.glucose-list-container{
     overflow-y: hidden;
-    height: 90vh;
+    height: 100%;
+    width: 100%;
 }
 
-.glucose-list:hover{
+.glucose-list-container:hover{
     overflow-y: scroll;
     overflow: overlay
 }

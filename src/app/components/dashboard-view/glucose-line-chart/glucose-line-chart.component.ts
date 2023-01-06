@@ -8,7 +8,7 @@ import 'chartjs-adapter-moment'
   templateUrl: './glucose-line-chart.component.html',
   styleUrls: ['./glucose-line-chart.component.css']
 })
-export class GlucoseLineChartComponent {
+export class GlucoseLineChartComponent implements OnInit, OnChanges {
   
   @Input() glucoseValues: GlucoseValue[] = new Array<GlucoseValue>();
 
@@ -73,7 +73,7 @@ export class GlucoseLineChartComponent {
 
   ngOnChanges(){
     this.setChartData();
-    this.chart?.chart?.update();
+    this.updateChart();
   }
 
   setChartData() {
@@ -87,6 +87,11 @@ export class GlucoseLineChartComponent {
 
     });
 
+  }
+
+  public updateChart(){
+    console.log('child here!');
+    this.chart?.chart?.update();
   }
 
 }

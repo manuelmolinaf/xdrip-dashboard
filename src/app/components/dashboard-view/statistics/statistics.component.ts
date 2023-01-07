@@ -17,7 +17,7 @@ export class StatisticsComponent implements OnInit, OnChanges {
 
   constructor(){}
 
-  ngOnInit(){
+  ngOnInit(): void {
     
   }
 

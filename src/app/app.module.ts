@@ -14,7 +14,11 @@ import { StatisticsComponent } from './components/dashboard-view/statistics/stat
 import {NgForOf} from '@angular/common';
 import {GridsterComponent, GridsterItemComponent} from 'angular-gridster2';
 import { FontAwesomeModule, FaIconLibrary  } from '@fortawesome/angular-fontawesome';
-import { BasicValueTileComponent } from './components/dashboard-view/tiles/single-value-tiles/basic-value-tile/basic-value-tile.component';
+import { SharedValueTileComponent } from './components/dashboard-view/tiles/single-value-tiles/shared-value-tile/shared-value-tile.component';
+import { AverageValueTileComponent } from './components/dashboard-view/tiles/single-value-tiles/average-value-tile/average-value-tile.component';
+import { LatestValueTileComponent } from './components/dashboard-view/tiles/single-value-tiles/latest-value-tile/latest-value-tile.component';
+import { LongestHighTileComponent } from './components/dashboard-view/tiles/single-value-tiles/longest-high-tile/longest-high-tile.component';
+import { RangePieChartTileComponent } from './components/dashboard-view/tiles/chart-tiles/range-pie-chart-tile/range-pie-chart-tile.component';
 
 
 @NgModule({
@@ -24,7 +28,11 @@ import { BasicValueTileComponent } from './components/dashboard-view/tiles/singl
     GlucoseListTileComponent,
     DashboardViewComponent,
     StatisticsComponent,
-    BasicValueTileComponent
+    SharedValueTileComponent,
+    AverageValueTileComponent,
+    LatestValueTileComponent,
+    LongestHighTileComponent,
+    RangePieChartTileComponent
   ],
   imports: [
     BrowserModule,

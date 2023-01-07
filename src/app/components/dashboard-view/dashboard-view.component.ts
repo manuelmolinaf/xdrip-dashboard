@@ -11,9 +11,8 @@ import { CompactType, GridsterConfig, GridsterItem, GridType}  from 'angular-gri
 })
 export class DashboardViewComponent implements OnInit {
 
-
-
   public glucoseValues:GlucoseValue[] = new Array<GlucoseValue>();
+  public sgvNumberArray:number[] = new Array<number>();
   public glucoseValuesCount:number = 288;
   public status!: Status;
   
@@ -26,9 +25,9 @@ export class DashboardViewComponent implements OnInit {
     gridType: GridType.Fit,
     compactType: CompactType.None,
     maxCols: 10,
-    //maxRows: 10,
+    maxRows: 8,
     minCols:10,
-    minRows:10,
+    minRows:8,
     pushItems: true,
     draggable: {
       enabled: true
@@ -44,7 +43,7 @@ export class DashboardViewComponent implements OnInit {
   }
 
 
-  ngOnInit(){
+  ngOnInit(): void {
     
     this.setXdripStatus();
     this.setGlucoseValues();
@@ -53,35 +52,13 @@ export class DashboardViewComponent implements OnInit {
 
   }
 
-  setGlucoseValues(){
-    var request = this.xdripService.getGlucoseValues(this.glucoseValuesCount);
-    
-    request.subscribe( data =>{
-      this.glucoseValues = data;   
-    })
-    
-  }
-
-  refreshGlucoseValues(){
-    interval(5*60*100).pipe(
-      mergeMap(()=> this.xdripService.getGlucoseValues(this.glucoseValuesCount))
-    ).subscribe(data => {
-      this.glucoseValues = data;
-    });
-  }
-
-  setXdripStatus(){   
-    var request = this.xdripService.getStatus();
-    request.subscribe( data => this.status = data);
-  }
-
   initializeDashboard(){
     this.dashboard = [
-      { item:'glucoseList', cols: 3, rows: 10, y: 0, x: 0 },
-      { item:'lineChart', cols: 7, rows: 5, y: 0, x: 3},
-      { item:'lineChart', cols: 2, rows: 2, y: 6, x: 3}
-      
-      
+      { item:'glucoseList', resizableHandles:{s: true, e: false,n: true,w: false,se: false, ne: false,sw: false, nw: false }, cols: 2, rows: 8, x: 0, y: 0},
+      { item:'lineChart', cols: 7, rows: 4, x: 2, y: 0},
+      { item:'value', resizeEnabled: false, cols: 2, rows: 1, x: 2, y: 4},
+      { item:'value', resizeEnabled: false, cols: 2, rows: 1, x: 4, y: 4}
+       
     ];
   }
 
@@ -96,9 +73,36 @@ export class DashboardViewComponent implements OnInit {
 
   }
 
-  test(t:any){
-    console.log(t)
+
+  setGlucoseValues(){
+    var request = this.xdripService.getGlucoseValues(this.glucoseValuesCount);
+    
+    request.subscribe( data =>{
+      this.glucoseValues = data;  
+      this.setSgvNumberArray(); 
+    })
+    
   }
+
+  refreshGlucoseValues(){
+    interval(5*60*1000).pipe(
+      mergeMap(()=> this.xdripService.getGlucoseValues(this.glucoseValuesCount))
+    ).subscribe(data => {
+      this.glucoseValues = data;
+    });
+  }
+
+  setXdripStatus(){   
+    var request = this.xdripService.getStatus();
+    request.subscribe( data => this.status = data);
+  }
+
+  setSgvNumberArray(){
+    this.sgvNumberArray = [];
+    this.glucoseValues.forEach(value => this.sgvNumberArray.push(value.sgv));
+  }
+
+
 
 }
 

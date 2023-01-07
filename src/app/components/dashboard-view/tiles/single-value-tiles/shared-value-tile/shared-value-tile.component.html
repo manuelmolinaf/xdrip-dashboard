@@ -1,17 +1,29 @@
-<ng-template [ngIf]="glucoseValues.length > 0" [ngIfElse]="loading">
+<ng-template [ngIf]="!isLoading" [ngIfElse]="loading">
 
-    <div class="estatistics-container">
-        Average: {{glucoseAverage}}
-        Max Glucose: {{maxGlucose}}
-        Min Glucose: {{minGlucose}}
+    <div class="h-100 d-flex">
+        <div class="mx-auto my-auto">
+            <div class="row h-25">
+                <div class="col text-center text-secondary fw-bold">
+                    {{title}}
+                </div>       
+            </div>
+            <div [class]="'row h-75' + ' ' + valueClass">
+                <div class="col text-center fs-1 fw-bold">
+                    {{value}}
+                </div>       
+            </div>
+        </div>
+        
     </div>
+    
     
 </ng-template>
 
 
 <ng-template #loading>
-    <div class="rounded shadow bg-white statistics-container d-flex">
+    <div class="d-flex h-100">
         <div class="mx-auto my-auto">
+            
             <div class="spinner-grow spinner-grow-sm text-secondary" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div>

@@ -67,7 +67,7 @@ export class GlucoseLineChartTileComponent implements OnInit, OnChanges {
 
   constructor(){   
   }
-  ngOnInit(){
+  ngOnInit(): void {
     this.setChartData();
   }
 
@@ -90,7 +90,6 @@ export class GlucoseLineChartTileComponent implements OnInit, OnChanges {
   }
 
   public updateChart(){
-    console.log('child here!');
     this.chart?.chart?.update();
   }
 

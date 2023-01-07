@@ -7,21 +7,24 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgChartsModule } from 'ng2-charts';
-import { GlucoseLineChartComponent } from './components/dashboard-view/glucose-line-chart/glucose-line-chart.component';
-import { GlucoseListComponent } from './components/dashboard-view/glucose-list/glucose-list.component';
+import { GlucoseLineChartTileComponent } from './components/dashboard-view/tiles/chart-tiles/glucose-line-chart-tile/glucose-line-chart-tile.component';
+import { GlucoseListTileComponent } from './components/dashboard-view/tiles/other-tiles/glucose-list-tile/glucose-list-tile.component';
 import { DashboardViewComponent } from './components/dashboard-view/dashboard-view.component';
 import { StatisticsComponent } from './components/dashboard-view/statistics/statistics.component';
 import {NgForOf} from '@angular/common';
 import {GridsterComponent, GridsterItemComponent} from 'angular-gridster2';
+import { FontAwesomeModule, FaIconLibrary  } from '@fortawesome/angular-fontawesome';
+import { BasicValueTileComponent } from './components/dashboard-view/tiles/single-value-tiles/basic-value-tile/basic-value-tile.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    GlucoseLineChartComponent,
-    GlucoseListComponent,
+    GlucoseLineChartTileComponent,
+    GlucoseListTileComponent,
     DashboardViewComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    BasicValueTileComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +33,15 @@ import {GridsterComponent, GridsterItemComponent} from 'angular-gridster2';
     NgChartsModule,
     NgForOf,
     GridsterComponent,
-    GridsterItemComponent
+    GridsterItemComponent,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+  constructor(fontAwesomeLibrary: FaIconLibrary){
+    
+  }
+}

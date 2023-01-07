@@ -4,11 +4,11 @@ import { BaseChartDirective } from 'ng2-charts';
 import { GlucoseValue } from 'src/models/SugarValue';
 import 'chartjs-adapter-moment'
 @Component({
-  selector: 'app-glucose-line-chart',
-  templateUrl: './glucose-line-chart.component.html',
-  styleUrls: ['./glucose-line-chart.component.css']
+  selector: 'app-glucose-line-chart-tile',
+  templateUrl: './glucose-line-chart-tile.component.html',
+  styleUrls: ['./glucose-line-chart-tile.component.css']
 })
-export class GlucoseLineChartComponent implements OnInit, OnChanges {
+export class GlucoseLineChartTileComponent implements OnInit, OnChanges {
   
   @Input() glucoseValues: GlucoseValue[] = new Array<GlucoseValue>();
 

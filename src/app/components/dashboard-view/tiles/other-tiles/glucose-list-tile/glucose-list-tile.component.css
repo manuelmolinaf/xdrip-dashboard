@@ -6,7 +6,7 @@
 
 .glucose-list-container:hover{
     overflow-y: scroll;
-    overflow: overlay
+    overflow: overlay;
 }
 
 .inline-text{

@@ -78,7 +78,8 @@ export class DashboardViewComponent implements OnInit {
   initializeDashboard(){
     this.dashboard = [
       { item:'glucoseList', cols: 3, rows: 10, y: 0, x: 0 },
-      { item:'lineChart', cols: 7, rows: 5, y: 0, x: 3}
+      { item:'lineChart', cols: 7, rows: 5, y: 0, x: 3},
+      { item:'lineChart', cols: 2, rows: 2, y: 6, x: 3}
       
       
     ];

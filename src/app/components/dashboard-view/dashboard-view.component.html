@@ -3,10 +3,13 @@
 
         <gridster *ngIf="dashboard.length > 0" [options]="options">
             <gridster-item class="rounded shadow" [item]="dashboard[0]">
-                <app-glucose-list [glucoseValues]="glucoseValues" [status]="status"></app-glucose-list>
+                <app-glucose-list-tile [glucoseValues]="glucoseValues" [status]="status"></app-glucose-list-tile>
             </gridster-item>
             <gridster-item class="rounded shadow" [item]="dashboard[1]">
-                <app-glucose-line-chart #linechart [glucoseValues]="glucoseValues"></app-glucose-line-chart>
+                <app-glucose-line-chart-tile [glucoseValues]="glucoseValues"></app-glucose-line-chart-tile>
+            </gridster-item>
+            <gridster-item class="rounded shadow" [item]="dashboard[2]">
+                <app-statistics [glucoseValues]="glucoseValues"></app-statistics>
             </gridster-item>
         </gridster>
         

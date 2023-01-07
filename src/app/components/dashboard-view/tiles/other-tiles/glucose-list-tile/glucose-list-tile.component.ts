@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Status } from 'src/models/Status';
-import { GlucoseValue } from 'src/models/SugarValue';
+import { Status } from 'src/models/api/Status';
+import { GlucoseValue } from 'src/models/api/GlucoseValue';
 
 @Component({
   selector: 'app-glucose-list-tile',

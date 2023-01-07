@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { GlucoseValue } from '../models/SugarValue';
-import { Status } from 'src/models/Status';
+import { GlucoseValue } from '../models/api/GlucoseValue';
+import { Status } from 'src/models/api/Status';
 
 @Injectable({
   providedIn: 'root'

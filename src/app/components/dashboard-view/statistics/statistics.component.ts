@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, OnChanges } from '@angular/core';
-import { GlucoseValue } from 'src/models/SugarValue';
+import { GlucoseValue } from 'src/models/api/GlucoseValue';
 
 @Component({
   selector: 'app-statistics',

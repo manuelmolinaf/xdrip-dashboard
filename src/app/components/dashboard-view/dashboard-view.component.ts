@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { interval, mergeMap } from 'rxjs';
-import { Status } from 'src/models/Status';
-import { GlucoseValue as GlucoseValue } from 'src/models/SugarValue';
+import { Status } from 'src/models/api/Status';
+import { GlucoseValue as GlucoseValue } from 'src/models/api/GlucoseValue';
 import { XdripService } from 'src/services/xdrip.service';
 import { CompactType, GridsterConfig, GridsterItem, GridType}  from 'angular-gridster2';
 @Component({

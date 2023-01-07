@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild, OnChanges,OnInit } from '@angular/core';
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { GlucoseValue } from 'src/models/SugarValue';
+import { GlucoseValue } from 'src/models/api/GlucoseValue';
 import 'chartjs-adapter-moment'
 @Component({
   selector: 'app-glucose-line-chart-tile',

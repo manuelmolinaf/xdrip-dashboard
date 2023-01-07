@@ -1,28 +1,43 @@
-import { Component, Input, ViewChild, OnChanges,OnInit } from '@angular/core';
-import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
+import { Component, Input, ViewChild, OnChanges,OnInit, ElementRef, AfterViewInit } from '@angular/core';
+import { Chart, ChartConfiguration, ChartEvent, ChartType, Color } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import { GlucoseValue } from 'src/models/api/GlucoseValue';
 import 'chartjs-adapter-moment'
+import { Status } from 'src/models/api/Status';
 @Component({
   selector: 'app-glucose-line-chart-tile',
   templateUrl: './glucose-line-chart-tile.component.html',
   styleUrls: ['./glucose-line-chart-tile.component.css']
 })
-export class GlucoseLineChartTileComponent implements OnInit, OnChanges {
+export class GlucoseLineChartTileComponent implements OnInit, OnChanges, AfterViewInit {
   
   @Input() glucoseValues: GlucoseValue[] = new Array<GlucoseValue>();
+  @Input() status!: Status;
+  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
+  @ViewChild('myCanvas') canvas!: ElementRef;
+    
+  public datasets:any[] = [
+    {
+      data:[],
+      label: 'Blood Glucose',
+      backgroundColor: 'rgba(77,83,96,0.2)',
+      borderColor: (context:any) => {
+        const chart = context.chart;
+        const {ctx, chartArea} = chart;
 
-  public datasets:any[] = [{
-    data:[],
-    label: 'Blood Glucose',
-    backgroundColor: 'rgba(77,83,96,0.2)',
-    borderColor: 'rgba(77,83,96,1)',
-    pointBackgroundColor: 'rgba(77,83,96,1)',
-    pointBorderColor: '#fff',
-    pointHoverBackgroundColor: '#fff',
-    pointHoverBorderColor: 'rgba(77,83,96,1)',
-    fill: 'origin'
-  }
+        if (!chartArea) {
+          // This case happens on initial chart load
+          return;
+        }
+        return this.getGradient(ctx, chartArea);
+      },
+      pointBackgroundColor: 'rgba(77,83,96,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(77,83,96,1)',
+      fill: 'origin'
+      
+    }
   ];
 
 
@@ -53,28 +68,37 @@ export class GlucoseLineChartTileComponent implements OnInit, OnChanges {
       legend:{
         display: false
       },
-      title: {
-          display: true,
-          text: 'Glucose Levels'
-      }
-  }
+      // title: {
+      //     display: true,
+      //     text: 'Glucose Levels'
+      // }
+    }
   };
+
+  chartWidth:any;
+  chartHeight:any;
+  chartGradient:any;
   
 
   public lineChartType: ChartType = 'line';
 
-  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
+  
 
   constructor(){   
   }
   ngOnInit(): void {
-    this.setChartData();
+    this.setChartData(); 
   }
 
-  ngOnChanges(){
-    this.setChartData();
-    this.updateChart();
+  ngAfterViewInit(): void {
+    
   }
+  
+
+  ngOnChanges(){
+    this.setChartData(); 
+  }
+  
 
   setChartData() {
     this.datasets[0].data = []
@@ -89,8 +113,25 @@ export class GlucoseLineChartTileComponent implements OnInit, OnChanges {
 
   }
 
-  public updateChart(){
-    this.chart?.chart?.update();
+  getGradient(ctx:any, chartArea:any) {
+    
+    const chartWidth = chartArea.right - chartArea.left;
+    const chartHeight = chartArea.bottom - chartArea.top;
+    if (!this.chartGradient || this.chartWidth !== chartWidth || this.chartHeight !== chartHeight) {
+      // Create the gradient because this is either the first render
+      // or the size of the chart has changed
+      this.chartWidth = chartWidth;
+      this.chartHeight = chartHeight;
+      this.chartGradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+      //this.chartGradient.addColorStop(0, '#dc3545');
+      this.chartGradient.addColorStop(0.23, '#dc3545');
+      this.chartGradient.addColorStop(0.28, '#198754');
+      this.chartGradient.addColorStop(0.60, '#ffc107');
+    }
+
+    return this.chartGradient;
   }
+
+  
 
 }

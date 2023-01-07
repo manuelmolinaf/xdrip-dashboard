@@ -22,4 +22,5 @@ export class XdripService {
     return this.http.get<Status>(this.xdripUrl + '/status.json');
   }
 
+
 }

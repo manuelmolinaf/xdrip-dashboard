@@ -6,7 +6,7 @@
                 <app-glucose-list-tile [glucoseValues]="glucoseValues" [status]="status"></app-glucose-list-tile>
             </gridster-item>
             <gridster-item class="rounded shadow-sm" [item]="dashboard[1]">
-                <app-glucose-line-chart-tile [glucoseValues]="glucoseValues"></app-glucose-line-chart-tile>
+                <app-glucose-line-chart-tile [glucoseValues]="glucoseValues" [status]="status"></app-glucose-line-chart-tile>
             </gridster-item>
             <gridster-item class="rounded shadow-sm" [item]="dashboard[2]">
                 <app-average-value-tile [glucoseValues]="glucoseValues" [status]="status"></app-average-value-tile>

@@ -16,7 +16,8 @@ export class LongestHighTileComponent implements OnChanges {
   valueClass: string = '';
 
   ngOnChanges(): void {
-    this.setLongestHigh();
+    if(this.status)
+      this.setLongestHigh();
   }
 
   setLongestHigh(){

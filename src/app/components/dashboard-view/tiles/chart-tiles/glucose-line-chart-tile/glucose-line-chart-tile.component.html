@@ -1,6 +1,6 @@
 <ng-template [ngIf]="glucoseValues.length > 0" [ngIfElse]="loading">
     <div class="p-3 bg-white chart-container">
-        <canvas ngClass="h-100" baseChart class="chart"
+        <canvas id="myCanvas" ngClass="h-100" baseChart class="chart"
             [datasets]="datasets"
             [options]="lineChartOptions"
             [type]="lineChartType"></canvas>

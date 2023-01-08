@@ -4,6 +4,7 @@ import { BaseChartDirective } from 'ng2-charts';
 import { GlucoseValue } from 'src/models/api/GlucoseValue';
 import 'chartjs-adapter-moment'
 import { Status } from 'src/models/api/Status';
+import { Tiles } from 'src/models/dashboard/Tiles';
 @Component({
   selector: 'app-glucose-line-chart-tile',
   templateUrl: './glucose-line-chart-tile.component.html',
@@ -15,12 +16,19 @@ export class GlucoseLineChartTileComponent implements OnInit, OnChanges, AfterVi
   @Input() status!: Status;
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
   @ViewChild('myCanvas') canvas!: ElementRef;
+
+  public gridsterItem = { tile:Tiles.GlucoseLineChart,
+    cols: 7,
+    rows: 4,
+    x: 0,
+    y: 0
+  }
     
   public datasets:any[] = [
     {
       data:[],
       label: 'Blood Glucose',
-      backgroundColor: 'rgba(77,83,96,0.2)',
+      //backgroundColor: 'rgba(77,83,96,0.2)',
       borderColor: (context:any) => {
         const chart = context.chart;
         const {ctx, chartArea} = chart;
@@ -35,7 +43,7 @@ export class GlucoseLineChartTileComponent implements OnInit, OnChanges, AfterVi
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(77,83,96,1)',
-      fill: 'origin'
+      //fill: 'origin'
       
     }
   ];

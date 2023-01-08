@@ -1,19 +1,34 @@
 <body class="bg-main h-100">
     <div class="container main-view-container mt-5" style="height: 90vh;">
 
-        <gridster *ngIf="dashboard.length > 0" [options]="options">
-            <gridster-item class="rounded shadow-sm" [item]="dashboard[0]">
-                <app-glucose-list-tile [glucoseValues]="glucoseValues" [status]="status"></app-glucose-list-tile>
-            </gridster-item>
-            <gridster-item class="rounded shadow-sm" [item]="dashboard[1]">
-                <app-glucose-line-chart-tile [glucoseValues]="glucoseValues" [status]="status"></app-glucose-line-chart-tile>
-            </gridster-item>
-            <gridster-item class="rounded shadow-sm" [item]="dashboard[2]">
-                <app-average-value-tile [glucoseValues]="glucoseValues" [status]="status"></app-average-value-tile>
-            </gridster-item>
-            <gridster-item class="rounded shadow-sm" [item]="dashboard[3]">
-                <app-longest-high-tile [glucoseValues]="glucoseValues" [status]="status"></app-longest-high-tile>
-            </gridster-item>
+        <gridster *ngIf="dashboardTiles.length > 0" [options]="options">
+            <ng-template ngFor let-tile [ngForOf]="dashboardTiles">
+
+                <ng-container [ngSwitch]="tile">
+
+                    <gridster-item class="rounded shadow-sm" *ngSwitchCase="tilesType.GlucoseList"  [item]="glucoseListTile.gridsterItem">
+                        <app-glucose-list-tile #glucoseListTile [glucoseValues]="glucoseValues" [status]="status"></app-glucose-list-tile>
+                    </gridster-item>
+
+                    <gridster-item class="rounded shadow-sm" *ngSwitchCase="tilesType.GlucoseLineChart" [item]="glucoseLineChartTile.gridsterItem">
+                        <app-glucose-line-chart-tile #glucoseLineChartTile [glucoseValues]="glucoseValues" [status]="status"></app-glucose-line-chart-tile>
+                    </gridster-item>
+
+                    <gridster-item class="rounded shadow-sm" *ngSwitchCase="tilesType.AverageValue" [item]="averageValueTile.gridsterItem">
+                        <app-average-value-tile #averageValueTile [glucoseValues]="glucoseValues" [status]="status"></app-average-value-tile>
+                    </gridster-item>
+
+                    <gridster-item class="rounded shadow-sm" *ngSwitchCase="tilesType.LongestHigh" [item]="longestHighTile.gridsterItem">
+                        <app-longest-high-tile #longestHighTile [glucoseValues]="glucoseValues" [status]="status"></app-longest-high-tile>
+                    </gridster-item>
+
+
+                </ng-container>
+
+                
+
+            </ng-template>
+            
         </gridster>
         
     </div>

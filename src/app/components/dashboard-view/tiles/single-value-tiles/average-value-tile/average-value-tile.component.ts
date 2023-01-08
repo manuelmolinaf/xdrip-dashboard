@@ -1,7 +1,9 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnChanges } from '@angular/core';
+import { GridsterItem } from 'angular-gridster2';
 import { GlucoseValue } from 'src/models/api/GlucoseValue';
 import { Status } from 'src/models/api/Status';
+import { Tiles } from 'src/models/dashboard/Tiles';
 
 @Component({
   selector: 'app-average-value-tile',
@@ -17,6 +19,14 @@ export class AverageValueTileComponent implements OnChanges {
   valueClass: string = '';
   sgvValues: number[] = [];
 
+  public gridsterItem:GridsterItem = {
+    tile:Tiles.LongestHigh,
+    resizeEnabled: false,
+    cols: 2,
+    rows: 1,
+    x: 0,
+    y: 0
+  }
   
   ngOnChanges(): void {
     

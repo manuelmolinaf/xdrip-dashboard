@@ -1,11 +1,17 @@
+
 <ng-template [ngIf]="glucoseValues.length > 0" [ngIfElse]="loading">
-    <div class="p-3 bg-white chart-container">
-        <canvas id="myCanvas" ngClass="h-100" baseChart class="chart"
+    
+    <div class="p-3 h-100">
+        <canvas id="myCanvas" baseChart
             [datasets]="datasets"
             [options]="lineChartOptions"
-            [type]="lineChartType"></canvas>
-        </div>
+            [type]="lineChartType">
+        </canvas>
+        
+    </div>
+    
 </ng-template>
+
 
 <ng-template #loading>
     <div class="bg-white d-flex chart-container">

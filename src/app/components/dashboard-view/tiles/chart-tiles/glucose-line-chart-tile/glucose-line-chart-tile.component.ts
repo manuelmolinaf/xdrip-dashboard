@@ -131,10 +131,11 @@ export class GlucoseLineChartTileComponent implements OnInit, OnChanges, AfterVi
       this.chartWidth = chartWidth;
       this.chartHeight = chartHeight;
       this.chartGradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
-      //this.chartGradient.addColorStop(0, '#dc3545');
+      
       this.chartGradient.addColorStop(0.23, '#dc3545');
       this.chartGradient.addColorStop(0.28, '#198754');
       this.chartGradient.addColorStop(0.60, '#ffc107');
+      this.chartGradient.addColorStop(0.66, '#fd7e14');
     }
 
     return this.chartGradient;

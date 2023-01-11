@@ -25,10 +25,14 @@
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: rgb(146, 146, 146);
-    border-radius: 10px;
+    border-radius: 0px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(129, 129, 129);
     border-radius: 10px;
+  }
+
+  .bi{
+    -webkit-text-stroke: 2px;
   }

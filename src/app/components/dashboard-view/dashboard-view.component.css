@@ -1,9 +1,5 @@
-.bg-main {
-    background-color: var(--main-bg-color);
-}
-
 gridster {
     background-color: var(--main-bg-color);
-    overflow: visible;
+    
+    
 }
-

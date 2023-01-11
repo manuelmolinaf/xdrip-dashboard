@@ -16,7 +16,33 @@
                     <h6 class="inline-text">{{status.settings.units}}</h6>
                 </div>
                 <div class="col-auto">
-                    <i class="fa-solid fa-flag"></i>
+                    <ng-container [ngSwitch]="glucoseValue.direction">
+
+                        <ng-container *ngSwitchCase="'DoubleUp'">
+                            <i  class="bi bi-arrow-up fs-4"></i>
+                            <i  class="bi bi-arrow-up fs-4"></i>
+                        </ng-container>
+
+                        <i *ngSwitchCase="'SingleUp'" class="bi bi-arrow-up fs-4"></i>
+
+                        <i *ngSwitchCase="'FortyFiveUp'" class="bi bi-arrow-up-right fs-4"></i>
+
+                        <i *ngSwitchCase="'Flat'" class="bi bi-arrow-right fs-4"></i>
+
+                        <i *ngSwitchCase="'FortyFiveDown'" class="bi bi-arrow-down-right fs-4"></i>
+
+                        <i *ngSwitchCase="'SingleDown'" class="bi bi-arrow-down fs-4"></i>
+
+                        <ng-container *ngSwitchCase="'DoubleDown'">
+                            <i  class="bi bi-arrow-down fs-4"></i>
+                            <i  class="bi bi-arrow-down fs-4"></i>
+                        </ng-container>
+
+                        <i *ngSwitchCase="'NotComputable'" class="bi bi-x-square fs-4"></i>
+
+                        <i *ngSwitchCase="'RateOutOfRange'" class="bi bi-exclamation-lg fs-4"></i>
+                    </ng-container>
+                    
                 </div>
         
                 <div class="col-auto fw-bold">    

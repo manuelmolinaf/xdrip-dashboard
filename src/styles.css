@@ -8,3 +8,7 @@ html{
     background-color: var(--main-bg-color);
 }
 
+.bg-main{
+  background-color: var(--main-bg-color);
+}
+

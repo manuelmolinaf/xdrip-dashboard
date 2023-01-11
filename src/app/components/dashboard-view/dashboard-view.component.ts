@@ -15,7 +15,7 @@ export class DashboardViewComponent implements OnInit {
 
   public glucoseValues:GlucoseValue[] = new Array<GlucoseValue>();
   public sgvNumberArray:number[] = new Array<number>();
-  public glucoseValuesCount:number = 288*7;
+  public glucoseValuesCount:number = 288;
   public status!: Status;
 
   public tilesType = Tiles;
@@ -30,9 +30,9 @@ export class DashboardViewComponent implements OnInit {
     itemResizeCallback: this.itemResize,
     gridType: GridType.Fit,
     compactType: CompactType.None,
-    maxCols: 10,
+    maxCols: 12,
     maxRows: 8,
-    minCols:10,
+    minCols:12,
     minRows:8,
     pushItems: true,
     draggable: {
@@ -59,15 +59,6 @@ export class DashboardViewComponent implements OnInit {
   }
 
   initializeDashboard(){
-    this.dashboard = [ 
-      // { item:'glucoseList', resizableHandles:{s: true, e: false,n: true,w: false,se: false, ne: false,sw: false, nw: false }, cols: 2, rows: 8, x: 0, y: 0},
-      // { item:'lineChart', cols: 7, rows: 4, x: 2, y: 0},
-      // { item:'value', resizeEnabled: false, cols: 2, rows: 1, x: 2, y: 4},
-      // { item:'value', resizeEnabled: false, cols: 2, rows: 1, x: 4, y: 4}
-       
-      
-    ];
-
     this.dashboardTiles = [Tiles.GlucoseList, Tiles.GlucoseLineChart, Tiles.AverageValue, Tiles.LongestHigh];
   }
 

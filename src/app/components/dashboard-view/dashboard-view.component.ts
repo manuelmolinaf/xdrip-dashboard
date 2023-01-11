@@ -15,7 +15,7 @@ export class DashboardViewComponent implements OnInit {
 
   public glucoseValues:GlucoseValue[] = new Array<GlucoseValue>();
   public sgvNumberArray:number[] = new Array<number>();
-  public glucoseValuesCount:number = 288;
+  public glucoseValuesCount:number = 288;//288
   public status!: Status;
 
   public tilesType = Tiles;
@@ -78,7 +78,7 @@ export class DashboardViewComponent implements OnInit {
     var request = this.xdripService.getGlucoseValues(this.glucoseValuesCount);
     
     request.subscribe( data =>{
-      this.glucoseValues = data;  
+      this.glucoseValues = data; 
       this.setSgvNumberArray(); 
     })
     

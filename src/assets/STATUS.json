@@ -1,0 +1,9 @@
+{
+  "settings": {
+      "units": "mg/dl",
+      "thresholds": {
+          "bgHigh": 160,
+          "bgLow": 70
+      }
+  }
+}

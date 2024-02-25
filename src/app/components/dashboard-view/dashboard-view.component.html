@@ -5,19 +5,19 @@
 
             <ng-container [ngSwitch]="tile">
 
-                <gridster-item class="shadow-sm" *ngSwitchCase="tilesType.GlucoseList"  [item]="glucoseListTile.gridsterItem">
+                <gridster-item class="shadow-sm rounded" *ngSwitchCase="tilesType.GlucoseList"  [item]="glucoseListTile.gridsterItem">
                     <app-glucose-list-tile #glucoseListTile [glucoseValues]="glucoseValues" [status]="status"></app-glucose-list-tile>
                 </gridster-item>
 
-                <gridster-item class="shadow-sm" *ngSwitchCase="tilesType.GlucoseLineChart" [item]="glucoseLineChartTile.gridsterItem">
+                <gridster-item class="shadow-sm rounded" *ngSwitchCase="tilesType.GlucoseLineChart" [item]="glucoseLineChartTile.gridsterItem">
                     <app-glucose-line-chart-tile #glucoseLineChartTile [glucoseValues]="glucoseValues" [status]="status"></app-glucose-line-chart-tile>                        
                 </gridster-item>
 
-                <gridster-item class="shadow-sm" *ngSwitchCase="tilesType.AverageValue" [item]="averageValueTile.gridsterItem">
+                <gridster-item class="shadow-sm rounded" *ngSwitchCase="tilesType.AverageValue" [item]="averageValueTile.gridsterItem">
                     <app-average-value-tile #averageValueTile [glucoseValues]="glucoseValues" [status]="status"></app-average-value-tile>
                 </gridster-item>
 
-                <gridster-item class="shadow-sm" *ngSwitchCase="tilesType.LongestHigh" [item]="longestHighTile.gridsterItem">
+                <gridster-item class="shadow-sm rounded" *ngSwitchCase="tilesType.LongestHigh" [item]="longestHighTile.gridsterItem">
                     <app-longest-high-tile #longestHighTile [glucoseValues]="glucoseValues" [status]="status"></app-longest-high-tile>
                 </gridster-item>
 

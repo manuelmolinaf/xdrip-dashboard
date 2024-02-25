@@ -3,7 +3,7 @@ import { GridsterItem } from 'angular-gridster2';
 import { GlucoseValue } from 'src/models/api/GlucoseValue';
 import { Status } from 'src/models/api/Status';
 import { Tiles } from 'src/models/dashboard/Tiles';
-
+import * as humanizeDuration from "humanize-duration";
 @Component({
   selector: 'app-longest-high-tile',
   templateUrl: './longest-high-tile.component.html',
@@ -26,10 +26,14 @@ export class LongestHighTileComponent implements OnChanges {
     y: 0
   }
 
+
+
   ngOnChanges(): void {
     if(this.status)
       this.setLongestHigh();
   }
+
+  
 
   setLongestHigh(){
 
@@ -58,7 +62,7 @@ export class LongestHighTileComponent implements OnChanges {
         }
     }
 
-    this.longestHigh = this.convertMsToHM(currentLongestHigh);
+    this.longestHigh = humanizeDuration(currentLongestHigh, { units: ["h", "m"], round:true});
   }
 
   padTo2Digits(num:number) {
@@ -80,5 +84,7 @@ export class LongestHighTileComponent implements OnChanges {
   
     return (this.padTo2Digits(hours) + ':' + this.padTo2Digits(minutes));
   }
+
+
 
 }

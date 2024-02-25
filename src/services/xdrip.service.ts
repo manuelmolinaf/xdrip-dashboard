@@ -16,13 +16,13 @@ export class XdripService {
    }
 
   public getGlucoseValues(count:number):Observable<GlucoseValue[]>{
-    //return this.http.get<GlucoseValue[]>(this.xdripUrl + '/sgv.json?count=' + count.toString());
-    return this.http.get<GlucoseValue[]>("../assets/GLUCOSE_VALUES.json");
+    return this.http.get<GlucoseValue[]>(this.xdripUrl + '/sgv.json?count=' + count.toString());
+    //return this.http.get<GlucoseValue[]>("../assets/GLUCOSE_VALUES.json");
   }
 
   public getStatus():Observable<Status>{
-    //return this.http.get<Status>(this.xdripUrl + '/status.json');
-    return this.http.get<Status>("../assets/STATUS.json");
+    return this.http.get<Status>(this.xdripUrl + '/status.json');
+    //return this.http.get<Status>("../assets/STATUS.json");
   }
 
 
